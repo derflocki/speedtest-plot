@@ -1,0 +1,2 @@
+13 */1 * * * root docker run --net=host --rm tianon/speedtest --csv >> /home/docker/volumes/nginx/data/famdorn.tk/speedtest/speedtest.csv
+15 */1 * * * root docker run --rm --volume /home/docker/volumes/nginx/data/famdorn.tk/speedtest/:/tmp -w /tmp pavlov99/gnuplot gnuplot speedtest.gnu > /home/docker/volumes/nginx/data/famdorn.tk/speedtest/speedtest.svg
