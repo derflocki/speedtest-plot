@@ -1,4 +1,4 @@
-set terminal svg enhanced size 1600,900 fname 'Arial' fsize 16
+set terminal svg enhanced size 1600,900 font "Arial,16"
 
 set grid
 set pointsize 0.1

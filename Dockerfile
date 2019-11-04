@@ -1,10 +1,10 @@
-FROM ubuntu:xenial
+FROM ubuntu:bionic
 
 RUN apt-get update
 
 RUN apt-get install -y --no-install-recommends ca-certificates python3 python3-pip gnuplot curl xmlstarlet
 
-RUN apt-get download gupnp-tools libgssdp-1.0-3 libglib2.0-0 libsoup2.4-1 libffi6 libxml2 libsqlite3-0 libicu55
+RUN apt-get download gupnp-tools libgssdp-1.0-3 libglib2.0-0 libsoup2.4-1 libffi6 libxml2 libsqlite3-0 libicu60
 
 RUN dpkg --force-all -i *.deb
 

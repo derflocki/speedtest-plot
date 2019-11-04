@@ -12,7 +12,6 @@ get_total_bytes_received() {
 	curl -s "$WAN_CIC_IP" -H "Content-Type: text/xml; charset="utf-8"" -H "SoapAction:urn:schemas-upnp-org:service:WANCommonInterfaceConfig:1#GetTotalBytesReceived" -d "@GetTotalBytesReceived.xml" | xmlstarlet sel -t -v "//NewTotalBytesReceived"
 }
 
-test -f /data/speedtest.gnu || cp /speedtest.gnu /data/
 touch /data/speedtest.csv
 
 start=$(timestamp)
@@ -40,5 +39,7 @@ $(date '+%Y-%m-%dT%H:%M:%S'),\
 0,0,\
 $(echo "print (("$end_sent" - "$start_sent")/("$end" - "$start")*8)\n" | perl),\
 $(echo "print (("$end_received" - "$start_received")/("$end" - "$start")*8)\n" | perl) >> /data/speedtest.csv
+tail -n 1000 /data/speedtest.csv > /data/speedtest.csv.tmp
+mv /data/speedtest.csv.tmp /data/speedtest.csv
 
-gnuplot /data/speedtest.gnu > /data/speedtest.svg
+gnuplot /speedtest.gnu > /data/speedtest.svg
